@@ -1,0 +1,47 @@
+{
+  "name": "rxjs-book-wikipedia-search",
+  "description": "rxjs-book-wikipedia-search",
+  "version": "0.0.0",
+  "author": {
+    "name": "bouzuya",
+    "email": "m@bouzuya.net",
+    "url": "http://bouzuya.net"
+  },
+  "bugs": {
+    "url": "https://github.com/bouzuya/rxjs-book-wikipedia-search/issues"
+  },
+  "dependencies": {
+    "@cycle/core": "^6.0.0",
+    "@cycle/dom": "^9.0.1",
+    "@cycle/jsonp": "^5.0.0",
+    "rx": "^4.0.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "browserify": "^13.0.0",
+    "espower-babel": "^4.0.1",
+    "mocha": "^2.3.4",
+    "power-assert": "^1.2.0",
+    "tsd": "^0.6.5",
+    "typescript": "^1.7.5"
+  },
+  "homepage": "https://github.com/bouzuya/rxjs-book-wikipedia-search#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bouzuya/rxjs-book-wikipedia-search"
+  },
+  "scripts": {
+    "browserify": "browserify --no-commondir index.js -o bundle.js",
+    "build": "tsc && npm run build-es2015 && npm run browserify",
+    "build-es2015": "babel --presets es2015 --out-dir lib/ .tmp/src/",
+    "clean": "rm -rf lib/ .tmp/",
+    "prepublish": "tsd reinstall && npm run clean && npm run build",
+    "start": "open index.html",
+    "test": "npm run clean && tsc && mocha --require test/espower-babel-loader.js .tmp/test/"
+  }
+}
